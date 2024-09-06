@@ -2,9 +2,9 @@
   "name": "backend-js-jp",
   "version": "1.0.0",
   "description": "backend repo jovem programador",
-  "main": "index.js",
+  "main": "post.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon post.js"
   },
   "author": "Victor Ezaki",
   "license": "ISC",
@@ -15,3 +15,4 @@
     "nodemon": "^3.1.4"
   }
 }
+
