@@ -4,7 +4,8 @@
   "description": "backend repo jovem programador",
   "main": "post.js",
   "scripts": {
-    "start": "nodemon post.js"
+    "dev": "node --watch post.js",
+    "start": "nodemon get.js"
   },
   "author": "Victor Ezaki",
   "license": "ISC",
