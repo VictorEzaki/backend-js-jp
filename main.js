@@ -1,3 +1,5 @@
+const funcoes = require('./scripts/funcoes');
+
 const express = require('express');
 const app = express();
 app.use(express.json())
@@ -5,7 +7,7 @@ app.use(express.json())
 app.post("/exercicio1", (req, res) => {
     const { num1, num2 } = req.body
 
-    const result = Number(num1) + Number(num2);
+    const result = funcoes.ex01(num1, num2);
 
     res.status(200).json({ result: result })
 })
@@ -14,7 +16,7 @@ app.post("/exercicio2", (req, res) => {
     // http://localhost:3000/exercicio2?valorHora=9.8&horas=800
     const { valorHora, horas } = req.body
 
-    const result = valorHora * horas;
+    const result = funcoes.ex02(valorHora, horas);
 
     res.send({ result: result })
 })
@@ -22,34 +24,33 @@ app.post("/exercicio2", (req, res) => {
 app.post("/exercicio3", (req, res) => {
     const { pessoa1, pessoa2, pessoa3, pessoa4, pessoa5 } = req.body
 
-    const result = (pessoa1 + pessoa2 + pessoa3 + pessoa4 + pessoa5) / 5
+    const result = funcoes.ex03( pessoa1, pessoa2, pessoa3, pessoa4, pessoa5 )
 
     res.send({ result: result })
 })
 
 app.post("/exercicio4", (req, res) => {
     const { temp } = req.body
-    const result = (9*temp + 160)/5
+    const result = funcoes.ex04( temp )
     res.send({ result: result })
 })
 
 app.post("/exercicio5", (req, res) => {
     const { milhas } = req.body
-    const result = (milhas *  1.60934).toFixed(2)
+    const result = funcoes.ex05(milhas)
     res.send({ result: result })
 })
 
 app.post("/exercicio6", (req, res) => {
     const { sec }  = req.body
 
-    const minutes = Number((sec / 60).toFixed(2));
-    const hours = Number((minutes / 60).toFixed(2));
+    let array = funcoes.ex06(sec);
 
     res.send({ 
         results: {
-            hours: hours,
-            minutes: minutes,
-            seconds: sec,
+            hours: array[0],
+            minutes: array[1],
+            seconds: sec
         } 
     })
 })
@@ -57,13 +58,12 @@ app.post("/exercicio6", (req, res) => {
 app.post("/exercicio7", (req, res) => {
     const { km } = req.body
 
-    const metros = Number((km * 1000).toFixed(2));
-    const cent = Number((metros * 100).toFixed(2));
+    let array = funcoes.ex07(km);
 
     res.send({
         results: {
-            metros: metros,
-            centimetro: cent
+            metros: array[0],
+            centimetro: array[1]
         }
     })
 })
@@ -71,11 +71,7 @@ app.post("/exercicio7", (req, res) => {
 app.post("/exercicio8", (req, res) => {
     const { num } = req.body
 
-    let tabuada = [];
-
-    for (let i = 0; i <= 11; i++) {
-        tabuada[i] = num * i;
-    }
+    let tabuada = funcoes.ex08(num);
 
     res.send({
         results: {
@@ -94,16 +90,57 @@ app.post("/exercicio8", (req, res) => {
     })
 })
 
-app.post("/exercicio9", (req, res) => {
-    const { milhas } = req.body
-    const result = (milhas *  1.60934).toFixed(2)
-    res.send({ result: result })
+app.post("/desafio01", (req, res) => {
+    const { idade } = req.body;
+
+    let array = funcoes.desafio01(idade);
+
+    res.send({
+        results: {
+            idade: idade,
+            meses: array[0],
+            dias: array[1]
+        }
+    })
 })
 
-app.post("/exercicio10", (req, res) => {
-    const { milhas } = req.body
-    const result = (milhas *  1.60934).toFixed(2)
-    res.send({ result: result })
+app.post("/desafio02", (req, res) => {
+    const { a, b } = req.body;
+
+    let antes = [ a, b ];
+
+    let depois = funcoes.desafio02(a, b);
+
+    res.send({
+        results: {
+            antes: {
+                a: antes[0],
+                b: antes[1]
+            },
+            depois: {
+                a: depois[0],
+                b: depois[1],
+            }
+        }
+    })
+})
+
+app.post("/desafio03", (req, res) => {
+    const { num1, num2 } = req.body;
+
+    const maior = funcoes.desafio03(num1, num2);
+
+    res.send({
+        results: {
+            maior: maior
+        }
+    })
+})
+
+app.post("/exercicio9", (req, res) => {
+    const { aluno1, aluno2, aluno3 } = req.body;
+
+    let array = funcoes.ex09(aluno1, aluno2, aluno3);
 })
 
 app.listen(3000, () => {
