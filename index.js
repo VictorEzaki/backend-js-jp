@@ -1,4 +1,4 @@
-const funcoes = require('./scripts/funcoes');
+const funcoes = require('./service/funcoes');
 
 const express = require('express');
 const app = express();
