@@ -138,9 +138,16 @@ app.post("/desafio03", (req, res) => {
 })
 
 app.post("/exercicio9", (req, res) => {
-    const { aluno1, aluno2, aluno3 } = req.body;
+    const { nota1, nota2, nota3 } = req.body;
 
-    let array = funcoes.ex09(aluno1, aluno2, aluno3);
+    const aluno = funcoes.ex09(nota1, nota2, nota3);
+
+    res.send ({ 
+        results: {
+            media: aluno.media,
+            situacao: aluno.situacao 
+        } 
+    })
 })
 
 app.listen(3000, () => {
