@@ -4,7 +4,8 @@
   "description": "backend repo jovem programador",
   "main": "post.js",
   "scripts": {
-    "dev": "node --watch index.js"
+    "dev": "node --watch index.js",
+    "test": "jest --coverage"
   },
   "author": "Victor Ezaki",
   "license": "ISC",
@@ -12,7 +13,7 @@
     "express": "^4.19.2"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.4"
   }
 }
-

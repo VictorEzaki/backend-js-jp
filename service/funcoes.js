@@ -1,4 +1,8 @@
 function ex01(num1, num2) {
+    if (isNaN(num1) || isNaN(num2)) {
+        return 'Erro';
+    }
+
     return Number(num1) + Number(num2);
 }
 
@@ -92,18 +96,21 @@ function desafio03(num1, num2) {
     }
 }
 
-function ex09(aluno1, aluno2, aluno3) {
-    let alunos = {
-        situacao,
-        nota
-    };
+function ex09(nota1, nota2, nota3) {
+    var aluno = new Object();
 
-    const media = ( aluno1 + aluno2 + aluno3 ) / 3;
+    aluno.media = ( nota1 + nota2 + nota3 ) / 3;
 
-    for (let i = 0; i < 3; i++) {
-        
+    if (aluno.media >= 7) {
+        aluno.situacao = "Aprovado";
+    } else if (aluno.media >= 5) {
+        aluno.situacao = "Recuperação";
+    } else{
+        aluno.situacao = "Reprovado";
     }
 
+    return aluno;
 }
 
+// module.exports = somar { para exportar somente uma função }
 module.exports = { ex01, ex02, ex03, ex04, ex05, ex06, ex07, ex08, desafio01, desafio02, desafio03, ex09 }
