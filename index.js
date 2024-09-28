@@ -44,15 +44,9 @@ app.post("/exercicio5", (req, res) => {
 app.post("/exercicio6", (req, res) => {
     const { sec }  = req.body
 
-    let array = funcoes.ex06(sec);
+    const results = funcoes.ex06(sec);
 
-    res.send({ 
-        results: {
-            hours: array[0],
-            minutes: array[1],
-            seconds: sec
-        } 
-    })
+    res.send({ results })
 })
 
 app.post("/exercicio7", (req, res) => {

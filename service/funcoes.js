@@ -7,32 +7,56 @@ function ex01(num1, num2) {
 }
 
 function ex02(valorHora, horas) {
+    if (isNaN(valorHora) || isNaN(horas) || valorHora < 0 || horas < 0) {
+        return 'Erro';
+    }
+
     return valorHora * horas;
 }
 
 function ex03(pessoa1, pessoa2, pessoa3, pessoa4, pessoa5) {
+    if (isNaN(pessoa1) || isNaN(pessoa2) || isNaN(pessoa3) || isNaN(pessoa4) || isNaN(pessoa5)) {
+        return 'Erro';
+    } else if (pessoa1 < 0 || pessoa2 < 0 || pessoa3 < 0 || pessoa4 < 0 || pessoa5 < 0) {
+        return 'Erro'
+    }
+
     return (pessoa1 + pessoa2 + pessoa3 + pessoa4 + pessoa5) / 5;
 }
 
 function ex04(temp) {
-    return (9*temp + 160)/5;
+    if (isNaN(temp)) {
+        return 'Erro';
+    }
+
+    return Number(((9*temp + 160)/5).toFixed(1));
 }
 
 function ex05(milhas) {
-    return (milhas * 1.60934).toFixed(2);
+    if (isNaN(milhas) || milhas < 0) {
+        return 'Erro';
+    }
+
+    return Number((milhas * 1.60934).toFixed(2));
 }
 
 function ex06(sec) {
+    if (isNaN(sec) || sec < 0) {
+        return 'Erro';
+    }
+
+    let object = new Object();
+
     const minutes = Number((sec / 60).toFixed(2));
     const hours = Number((minutes / 60).toFixed(2));
-
     
-    let array = [
-        hours,
-        minutes
-    ];
+    object = {
+        horas: hours,
+        minutos: minutes,
+        segundos: sec
+    }
 
-    return array;
+    return object;
 }
 
 function ex07(km) {
