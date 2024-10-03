@@ -140,6 +140,18 @@ class ServiceExercicio {
 
         return aluno;
     }
+
+    Ex13(num) {
+        if (isNaN(num) || num < 0) {
+            throw new Error('Informe um número válido');
+        }
+
+        if (num % 2 == 0) {
+            return "Par";
+        } else {
+            return "Impar";
+        }
+    }
 }
 
 
