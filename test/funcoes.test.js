@@ -1,14 +1,14 @@
-const { ex01, ex02, ex03, ex04, ex05, ex06 } = require ('../service/funcoes');
+const { ex01, ex02, ex03, ex04, ex05, ex06 } = require ('../src/services/funcoes');
 const { describe, it, expect } = require ('@jest/globals');
 
 describe('testando a função somar: ', () => {
     // Faz os ITs(testes)
 
     it('Somar dois números positivos', () => {
-        const result = ex01(2, 2);
-        // console.log(result);
+        const somar = ex01(2, 2);
+        // console.log(somar);
         
-        expect(result).toBe(4);
+        expect(somar).toBe(4);
     })
 
     it('Somar dois números negativos com positivo', () => {
@@ -40,17 +40,17 @@ describe('testando a função somar: ', () => {
     })
     
     it('Deve somar número com uma letra', () => {
-        const result = ex01(2, 'a');
-        // console.log(result);
+        const somar = () => ex01(2, 'a');
+        // console.log(somar);
         
-        expect(result).toBe('Erro');
+        expect(somar).toThrow('Informe um número');
     })
 
     it('Deve somar letra com um número', () => {
-        const result = ex01('a', 2);
+        const result = () => ex01('a', 2);
         // console.log(result);
         
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número');
     })
 }) 
 
@@ -58,38 +58,38 @@ describe('testando a função salario: ', () => {
     // Faz os ITs(testes)
 
     it('Deve multiplicar número negativo com positivo', () => {
-        const result = ex02(-7, 200);
+        const result = () => ex02(-7, 200);
         // console.log(result);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Deve multiplicar número positivo com negativo', () => {
-        const result = ex02(7, -200);
+        const result = () => ex02(7, -200);
         // console.log(result);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Deve multiplicar letra com número', () => {
-        const result = ex02('a', -200);
+        const result = () => ex02('a', -200);
         // console.log(result);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Deve multiplicar número com letra', () => {
-        const result = ex02(-7, 'a');
+        const result = () => ex02(-7, 'a');
         // console.log(result);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Deve multiplicar número negativo com negativo', () => {
-        const result = ex02(-7, -200);
+        const result = () => ex02(-7, -200);
         // console.log(result);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Deve multiplicar número positivo com positivo', () => {
@@ -103,63 +103,63 @@ describe('testando a função salario: ', () => {
 describe('testando a função que calcula média de peso', () => {
     
     it('Calcula a média com uma letra na primeira posição e 4 números decimais positivos', () => {
-        const result = ex03('a', 80.5, 80.5, 80.5, 80.5);
+        const result = () => ex03('a', 80.5, 80.5, 80.5, 80.5);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Calcula a média com uma letra na segunda posição e 4 números decimais positivos', () => {
-        const result = ex03(80.5, 'a', 80.5, 80.5, 80.5);
+        const result = () => ex03(80.5, 'a', 80.5, 80.5, 80.5);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Calcula a média com uma letra na terceira posição e 4 números decimais positivos', () => {
-        const result = ex03(80.5, 80.5, 'a', 80.5, 80.5);
+        const result = () => ex03(80.5, 80.5, 'a', 80.5, 80.5);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Calcula a média com uma letra na quarta posição e 4 números decimais positivos', () => {
-        const result = ex03(80.5, 80.5, 80.5, 'a', 80.5);
+        const result = () => ex03(80.5, 80.5, 80.5, 'a', 80.5);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Calcula a média com uma letra na última posição e 4 números decimais positivos', () => {
-        const result = ex03(80.5, 80.5, 80.5, 80.5, 'a');
+        const result = () => ex03(80.5, 80.5, 80.5, 80.5, 'a');
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Calcula a média com um número negativo na primeira posição e 4 números decimais positivos', () => {
-        const result = ex03(-80, 80.5, 80.5, 80.5, 80.5);
+        const result = () => ex03(-80, 80.5, 80.5, 80.5, 80.5);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Calcula a média com um número negativo na segunda posição e 4 números decimais positivos', () => {
-        const result = ex03(80.5, -80, 80.5, 80.5, 80.5);
+        const result = () => ex03(80.5, -80, 80.5, 80.5, 80.5);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Calcula a média com um número negativo na terceira posição e 4 números decimais positivos', () => {
-        const result = ex03(80.5, 80.5, -80, 80.5, 80.5);
+        const result = () => ex03(80.5, 80.5, -80, 80.5, 80.5);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Calcula a média com um número negativo na quarta posição e 4 números decimais positivos', () => {
-        const result = ex03(80.5, 80.5, 80.5, -80, 80.5);
+        const result = () => ex03(80.5, 80.5, 80.5, -80, 80.5);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Calcula a média com um número negativo na última posição e 4 números decimais positivos', () => {
-        const result = ex03(80.5, 80.5, 80.5, 80.5, -80);
+        const result = () => ex03(80.5, 80.5, 80.5, 80.5, -80);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 
     it('Calcula a média com um número negativo na última posição e 4 números decimais positivos', () => {
@@ -172,9 +172,9 @@ describe('testando a função que calcula média de peso', () => {
 describe('Testando a função que calcula a conversão de graus celcius para fahrenheint', () => {
     
     it('Deve tentar converter com uma letra', () => {
-        const result = ex04('a');
+        const result = () => ex04('a');
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
     
     it('Deve tentar converter com um número positivo', () => {
@@ -202,18 +202,18 @@ describe('Testando a função que calcula a conversão de graus celcius para fah
     })
     
     it('Deve tentar converter com um valor vazio', () => {
-        const result = ex04();
+        const result = () => ex04();
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 })
 
 describe('Testando a função que converte milhas em km', () => {
     
     it('Deve tentar converter com uma letra', () => {
-        const result = ex05('a');
+        const result = () => ex05('a');
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
     
     it('Deve tentar converter com um número positivo', () => {
@@ -223,9 +223,9 @@ describe('Testando a função que converte milhas em km', () => {
     })
     
     it('Deve tentar converter com um número negativo', () => {
-        const result = ex05(-3);
+        const result = () => ex05(-3);
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
     
     it('Deve tentar converter com um número decimal positivo', () => {
@@ -235,24 +235,24 @@ describe('Testando a função que converte milhas em km', () => {
     })
     
     it('Deve tentar converter com um número decimal negativo', () => {
-        const result = ex05(-3.23);
+        const result = () => ex05(-3.23);
 
-        expect(result).toBe("Erro");
+        expect(result).toThrow("Informe um número válido");
     })
     
     it('Deve tentar converter com um valor vazio', () => {
-        const result = ex05();
+        const result = () => ex05();
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
 })
 
 describe('Testando a função que converte segundos em horas e minutos', () => {
     
     it('Deve tentar converter com uma letra', () => {
-        const result = ex05('a');
+        const result = () => ex05('a');
 
-        expect(result).toBe('Erro');
+        expect(result).toThrow('Informe um número válido');
     })
     
     it('Deve tentar converter com um número positivo', () => {
