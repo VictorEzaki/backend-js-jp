@@ -27,6 +27,10 @@ router.post("/desafio03", ControllerExercicio.Desafio03);
 
 router.post("/exercicio9", ControllerExercicio.Ex09);
 
+router.post("/exercicio10", ControllerExercicio.Ex10);
+
+router.post("/exercicio11", ControllerExercicio.Ex11);
+
 router.post("/exercicio14", ControllerExercicio.Ex13);
 
 module.exports = router;

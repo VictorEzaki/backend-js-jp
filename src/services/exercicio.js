@@ -1,10 +1,34 @@
 class ServiceExercicio {
-    Ex01(num1, num2) {
+    Somar(num1, num2) {
         if (isNaN(num1) || isNaN(num2)) {
             throw new Error('Informe um número');
         }
 
         return Number(num1) + Number(num2);
+    }
+
+    Subtrair(num1, num2) {
+        if (isNaN(num1) || isNaN(num2)) {
+            throw new Error('Informe um número');
+        }
+
+        return Number(num1) - Number(num2);
+    }
+
+    Mult(num1, num2) {
+        if (isNaN(num1) || isNaN(num2)) {
+            throw new Error('Informe um número');
+        }
+
+        return Number(num1) * Number(num2);
+    }
+
+    Dividir(num1, num2) {
+        if (isNaN(num1) || isNaN(num2)) {
+            throw new Error('Informe um número');
+        }
+
+        return Number(num1) / Number(num2);
     }
 
     Ex02(valorHora, horas) {
@@ -67,13 +91,14 @@ class ServiceExercicio {
 
         const metros = Number((km * 1000).toFixed(2));
         const cent = Number((metros * 100).toFixed(2));
+        let results = new Object();
 
-        let array = [
-            metros,
-            cent
-        ]
+        results = {
+            metros: metros,
+            centimetros: cent 
+        }
 
-        return array;
+        return results;
     }
 
     Ex08(num) {
@@ -87,6 +112,11 @@ class ServiceExercicio {
     }
 
     Desafio01(idade) {
+
+        if (idade < 0 || isNaN(idade)) {
+            throw new Error('Informe um número válido')
+        }
+
         const meses = idade * 12;
         let dias = 0;
         const ano = 2024 - idade;
@@ -99,15 +129,21 @@ class ServiceExercicio {
             }
         }
 
-        let array = [
-            meses,
-            dias
-        ];
+        let object = new Object();
 
-        return array;
+        object = {
+            meses: meses,
+            dias: dias
+        }
+
+        return object;
     }
 
     Desafio02(a, b) {
+        if (a < 0 || b < 0 || isNaN(a) || isNaN(b)) {
+            throw new Error('Informe um número válido')
+        }
+
         let c = b;
         b = a;
         a = c;
@@ -118,6 +154,10 @@ class ServiceExercicio {
     }
 
     Desafio03(num1, num2) {
+        if (isNaN(num1) || isNaN(num2)) {
+            throw new Error('Informe um número válido')
+        }
+
         if (num1 > num2) {
             return num1;
         } else {
@@ -126,6 +166,14 @@ class ServiceExercicio {
     }
 
     Ex09(nota1, nota2, nota3) {
+        if (
+            nota1 < 0 || isNaN(nota1) ||
+            nota2 < 0 || isNaN(nota2) ||
+            nota3 < 0 || isNaN(nota3)
+        ) {
+            throw new Error('Informe um número válido');
+        }
+
         var aluno = new Object();
 
         aluno.media = (nota1 + nota2 + nota3) / 3;
@@ -139,6 +187,64 @@ class ServiceExercicio {
         }
 
         return aluno;
+    }
+
+    Ex10(peso, altura) {
+        if (
+            isNaN(peso) || peso < 0 ||
+            isNaN(altura) || altura < 0
+        ) {
+            throw new Error('Informe números válidos');
+        }
+
+        const imc = peso / (altura * altura);
+        let result = new Object();
+
+        result = {
+            valor: Number((imc).toFixed(2)),
+            imc: ""
+        }
+
+        if (imc > 40) {
+            result.imc = "Obesidade extrema";
+        } else if (imc > 35) {
+            result.imc = "Obesidade grau 2";
+        } else if (imc > 30) {
+            result.imc = "Obesidade grau 1";
+        } else if (imc > 25) {
+            result.imc = "SobrePeso";
+        } else if (imc > 18.5) {
+            result.imc = "Peso adequado";
+        } else if (imc < 18.5) {
+            result.imc = "Abaixo do peso ideal";
+        }
+
+        return result;
+    }
+
+    Ex11(num1, num2, operacao) {
+        
+        if (isNaN(num1) || isNaN(num2)) {
+            throw new Error('Informe um número');
+        }
+
+        switch (operacao) {
+            case "+":
+                return this.Somar(num1, num2);
+        
+            case "-":
+                return this.Subtrair(num1, num2);
+        
+            case "*":
+                return this.Mult(num1, num2);
+        
+            case "/":
+                return this.Dividir(num1, num2);
+        
+            default:
+                return "Escolha uma operação válida ( + | - | * | / )";
+        }
+
     }
 
     Ex13(num) {

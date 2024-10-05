@@ -6,7 +6,7 @@ class ControllerExercicio {
         try {
             const { num1, num2 } = req.body
     
-            const result = ServiceExercicio.Ex01(num1, num2);
+            const result = ServiceExercicio.Somar(num1, num2);
     
             res.status(200).json({ result: result })
         } catch (e) {
@@ -112,63 +112,95 @@ class ControllerExercicio {
     }
 
     Desafio01(req, res) {
-        const { idade } = req.body;
-    
-        let array = ServiceExercicio.Desafio01(idade);
-    
-        res.send({
-            results: {
-                idade: idade,
-                meses: array[0],
-                dias: array[1]
-            }
-        })
+        try {
+            const { idade } = req.body;
+        
+            const results = ServiceExercicio.Desafio01(idade);
+        
+            res.status(200).json({ results })
+        } catch (e) {
+            res.status(422).json({ msg: e.message })
+        }
     }
 
     Desafio02(req, res) {
-        const { a, b } = req.body;
-    
-        let antes = [a, b];
-    
-        let depois = ServiceExercicio.Desafio02(a, b);
-    
-        res.send({
-            results: {
-                antes: {
-                    a: antes[0],
-                    b: antes[1]
-                },
-                depois: {
-                    a: depois[0],
-                    b: depois[1],
+        try {
+            const { a, b } = req.body;
+        
+            let antes = [a, b];
+        
+            let depois = ServiceExercicio.Desafio02(a, b);
+        
+            res.status(200).send({
+                results: {
+                    antes: {
+                        a: antes[0],
+                        b: antes[1]
+                    },
+                    depois: {
+                        a: depois[0],
+                        b: depois[1],
+                    }
                 }
-            }
-        })
+            })
+        } catch (e) {
+            res.status(422).json({ msg: e.message })
+        }
     }
 
     Desafio03(req, res) {
-        const { num1, num2 } = req.body;
-    
-        const maior = ServiceExercicio.Desafio03(num1, num2);
-    
-        res.send({
-            results: {
-                maior: maior
-            }
-        })
+        try {
+            const { num1, num2 } = req.body;
+        
+            const maior = ServiceExercicio.Desafio03(num1, num2);
+        
+            res.status(200).send({
+                results: {
+                    maior: maior
+                }
+            })
+        } catch (e) {
+            res.status(422).json({ msg: e.message })
+        }
     }
 
     Ex09(req, res) {
-        const { nota1, nota2, nota3 } = req.body;
-    
-        const aluno = ServiceExercicio.Ex09(nota1, nota2, nota3);
-    
-        res.send({
-            results: {
-                media: aluno.media,
-                situacao: aluno.situacao
-            }
-        })
+        try {
+            const { nota1, nota2, nota3 } = req.body;
+        
+            const aluno = ServiceExercicio.Ex09(nota1, nota2, nota3);
+        
+            res.status(200).send({
+                results: {
+                    media: aluno.media,
+                    situacao: aluno.situacao
+                }
+            })
+        } catch (e) {
+            res.status(422).json({ msg: e.message })
+        }
+    }
+
+    Ex10(req,res) {
+        try {
+            const { peso, altura } = req.body
+            const results = ServiceExercicio.Ex10(peso, altura);
+
+            res.status(200).json({ results })
+        } catch (e) {
+            res.status(422).json({ msg: e.message })
+        }
+    }
+
+    Ex11(req, res) {
+        try {
+            const { num1, num2, operacao } = req.body;
+            const result = ServiceExercicio.Ex11(num1, num2, operacao);
+
+            res.status(200).json({ result: result });
+        } catch (e) {
+            res.status(422).json({ msg: e.message })
+        }
     }
 
     Ex13(req, res) {
